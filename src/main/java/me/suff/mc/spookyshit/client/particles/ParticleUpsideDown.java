@@ -17,7 +17,6 @@ public class ParticleUpsideDown extends ParticleEndRod {
         super(p_i46580_1_, p_i46580_2_, p_i46580_4_, p_i46580_6_, p_i46580_8_, p_i46580_10_, p_i46580_12_);
         this.particleScale *= rand.nextFloat() * rand.nextFloat();
         this.particleAlpha = 0.15F;
-        this.setColor(Color.ORANGE.darker().darker().darker().darker().darker().getRGB());
     }
 
     @Override
@@ -28,8 +27,6 @@ public class ParticleUpsideDown extends ParticleEndRod {
         GlStateManager.enableBlend();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
         GlStateManager.blendFunc(770, 1);
-        float opacity = MathHelper.clamp(MathHelper.sin((Minecraft.getMinecraft().player.ticksExisted + partialTicks) / 10F) * 0.1F + 0.1F, 0.11F, 1F);
-        GlStateManager.color(0.0F, 1, 0F, opacity);
         super.renderParticle(buffer, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
         RenderUtil.restoreLightMap();
         GlStateManager.enableLighting();

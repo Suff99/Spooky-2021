@@ -25,22 +25,30 @@ import java.util.Random;
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = SpookyShit.MODID)
 public class ClientHandler {
 
+    private static final Color color = new Color(0, 168, 107);
+    private static final Color colorGrass = new Color(230, 102, 11);
+
     @SubscribeEvent
     public static void onSetupFogDensity(EntityViewRenderEvent.RenderFogEvent.FogDensity event) {
         if (Minecraft.getMinecraft().world != null && CNUtil.shouldChange(Minecraft.getMinecraft().world)) {
             GlStateManager.setFog(GlStateManager.FogMode.EXP);
             event.setCanceled(true);
-            event.setDensity(0.12F);
+            event.setDensity(0.15F);
         }
     }
 
     @SubscribeEvent
     public static void onSetupFogColor(EntityViewRenderEvent.RenderFogEvent.FogColors event) {
         if (Minecraft.getMinecraft().world != null && CNUtil.shouldChange(Minecraft.getMinecraft().world)) {
+            event.setRed(105 / 255F);
+            event.setGreen(105 / 255F);
+            event.setBlue(105 / 255F);
+             /*===========
             event.setRed(0.14F);
             event.setGreen(0.13F);
             event.setBlue(0.12F);
-            /*event.setRed(0.14F);
+            ===========
+            event.setRed(0.14F);
             event.setGreen(0.15F);
             event.setBlue(0.22F);*/
         }
@@ -62,7 +70,8 @@ public class ClientHandler {
         EntityPlayer player = Minecraft.getMinecraft().player;
 
         if (CNUtil.shouldChange(player.world)) {
-            eve.setNewColor(Color.ORANGE.darker().darker().darker().darker().darker().getRGB());
+           eve.setNewColor(Color.ORANGE.getRGB());
+           // eve.setNewColor(color.getRGB());
         }
     }
 
@@ -72,7 +81,8 @@ public class ClientHandler {
         EntityPlayer player = Minecraft.getMinecraft().player;
 
         if (CNUtil.shouldChange(player.world)) {
-            eve.setNewColor(Color.ORANGE.darker().darker().darker().darker().darker().getRGB());
+           // eve.setNewColor(Color.ORANGE.darker().darker().darker().darker().darker().getRGB());
+            eve.setNewColor(colorGrass.getRGB());
         }
     }
 
